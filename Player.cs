@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public class Player
+    public class Player : IComparable
     {
         public int ID { get;  }
         public string PlayerName{ get; set; }
@@ -32,6 +32,15 @@ namespace Game
         public override string ToString()
         {
             return $"{ID}\t{PlayerName}\t{Score}";
+        }
+
+        public int CompareTo(object obj)
+        {
+            Player objectThatIAmComparingTo = obj as Player;
+
+            int returnValue = this.Score.CompareTo(objectThatIAmComparingTo.Score);
+
+            return returnValue;
         }
     }
 }
