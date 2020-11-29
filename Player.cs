@@ -11,6 +11,7 @@ namespace Game
         public int ID { get;  }
         public string PlayerName{ get; set; }
         public int Score { get; private set; }
+        public static int HighScore { get; private set; }
 
         public Player(int id, string playerName, int score)
         {
@@ -23,6 +24,14 @@ namespace Game
         {
             if (Score < 100)
                 Score += valueToAdd;
+
+            if (Score > HighScore)
+                HighScore = Score;
+        }
+
+        public override string ToString()
+        {
+            return $"{ID}\t{PlayerName}\t{Score}";
         }
     }
 }
